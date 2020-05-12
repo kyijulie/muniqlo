@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import Carousel from "./components/MainCenter/Carousel";
 import Recommendations from "./components/MainCenter/Recommendations";
 import FeaturedNav from "./components/Featured/FeaturedNav";
+import Footer from "./components/Footer/Footer";
 function App() {
   return (
     <BrowserRouter>
@@ -15,8 +16,9 @@ function App() {
           <MenuBar />
           <Carousel />
           <Recommendations />
-          <FeaturedNav />
+          {/* <FeaturedNav /> */}
         </div>
+        <Footer />
       </div>
     </BrowserRouter>
   );

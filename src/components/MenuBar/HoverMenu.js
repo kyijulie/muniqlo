@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+import styles from "../css/Nav.module.scss";
 
 class HoverMenu extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class HoverMenu extends Component {
     const menus = Object.keys(this.props.menuNames);
     return (
       <div
-        className="dropdown-content mt-0 w-100 shadow border-outline-success"
+        className={styles["dropdown-content"]}
         aria-labelledby="navbarDropdown"
       >
         {menus &&

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
 import HoverMenu from "./HoverMenu";
 import { connect } from "react-redux";
-
+import styles from "../css/Nav.module.scss";
+import cx from "classnames";
 class MenuBar extends Component {
   constructor(props) {
     super(props);
@@ -18,19 +18,19 @@ class MenuBar extends Component {
   }
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light row ">
-        <div className="col-xs-12 col-md-1 dropdown" to="/">
+      <nav className={styles.navbar}>
+        <div className={styles.dropdown} to="/">
           HOME
         </div>
-        <div className="col-xs-12 col-md-1 dropdown position-static">
-          <span onMouseOver={this.toggleMenu} title="NEW">
+        <div className={styles.dropdown}>
+          <span onMouseEnter={this.toggleMenu} title="NEW">
             NEW
           </span>
           {this.props.menu[this.state.menu] ? (
             <HoverMenu menuNames={this.props.menu[this.state.menu]} />
           ) : null}
         </div>
-        <div className="col-xs-12 col-md-1 dropdown">
+        <div className={styles.dropdown}>
           <span onMouseOver={this.toggleMenu} title="WOMEN">
             WOMEN
           </span>
@@ -38,7 +38,7 @@ class MenuBar extends Component {
             <HoverMenu menuNames={this.props.menu[this.state.menu]} />
           ) : null}
         </div>
-        <div className="col-xs-12 col-md-1 dropdown">
+        <div className={styles.dropdown}>
           <span onMouseOver={this.toggleMenu} title="MEN">
             MEN
           </span>
@@ -46,7 +46,7 @@ class MenuBar extends Component {
             <HoverMenu menuNames={this.props.menu[this.state.menu]} />
           ) : null}
         </div>
-        <div className="col-xs-12 col-md-1 dropdown" to="/kids">
+        <div className={styles.dropdown} to="/kids">
           <span onMouseOver={this.toggleMenu} title="KIDS">
             KIDS
           </span>
@@ -54,7 +54,7 @@ class MenuBar extends Component {
             <HoverMenu menuNames={this.props.menu[this.state.menu]} />
           ) : null}
         </div>
-        <div className="col-xs-12 col-md-1 dropdown" to="/baby">
+        <div className={styles.dropdown} to="/baby">
           <span onMouseOver={this.toggleMenu} title="BABY">
             BABY
           </span>
@@ -62,7 +62,7 @@ class MenuBar extends Component {
             <HoverMenu menuNames={this.props.menu[this.state.menu]} />
           ) : null}
         </div>
-        <div className="col-xs-12 col-md-1 dropdown" to="/">
+        <div className={styles.dropdown} to="/">
           <span onMouseOver={this.toggleMenu} title="ABOUT">
             ABOUT
           </span>
@@ -70,7 +70,8 @@ class MenuBar extends Component {
             <HoverMenu menuNames={this.props.menu[this.state.menu]} />
           ) : null}
         </div>
-        <div className="col-xs-12 col-md-5" to="/">
+        {/* figure out how to put search button on the right */}
+        <div className={cx(styles.dropdown, styles["dropdown-right"])} to="/">
           SEARCH BUTTON
         </div>
       </nav>

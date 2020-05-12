@@ -3,14 +3,15 @@ import toppic from "../../img/mothersdaytop.png";
 import bottompic1 from "../../img/mothersdaybottom1.png";
 import bottompic2 from "../../img/mothersdaybottom2.png";
 import bottompic3 from "../../img/mothersdaybottom3.png";
+import styles from "../css/Weekly.module.scss";
 
 const Recommendations = () => {
   return (
-    <div className="blog">
+    <div className={styles.blog}>
       <h3 className="title">Weekly Recommendations</h3>
-      <div className="top">
+      <div className={styles.top}>
         <a>
-          <img className="topimg" src={toppic} />
+          <img className={styles.topimg} src={toppic} />
         </a>
 
         <p className="title">IT'S NOT TOO LATE! GIFT SMART WITH GIFTNOW®</p>
@@ -19,28 +20,28 @@ const Recommendations = () => {
           see how easy gift-giving can be.
         </p>
       </div>
-      <div className="bottom">
-        <section className="bottom-1">
+      <div className={styles.bottom}>
+        <section className={styles["bottom-1"]}>
           <a>
-            <img className="bottomimg" src={bottompic1} />
+            <img className={styles.bottomimg} src={bottompic1} />
           </a>
           <p className="title">T-SHIRTS COLLECTION</p>
           <p>
             Find your new favorites in our wide variety of styles and colors.
           </p>
         </section>
-        <section className="bottom-1">
+        <section className={styles["bottom-1"]}>
           <a>
-            <img className="bottomimg" src={bottompic2} />
+            <img className={styles.bottomimg} src={bottompic2} />
           </a>
           <p className="title">T-SHIRTS COLLECTION</p>
           <p>
             Find your new favorites in our wide variety of styles and colors.
           </p>
         </section>
-        <section className="bottom-1">
+        <section className={styles["bottom-1"]}>
           <a>
-            <img className="bottomimg" src={bottompic3} />
+            <img className={styles.bottomimg} src={bottompic3} />
           </a>
           <p className="title">T-SHIRTS COLLECTION</p>
           <p>

@@ -1,0 +1,36 @@
+.blog {
+  display: flex;
+  flex-direction: column;
+
+  text-align: left;
+}
+
+.top {
+  max-width: 100%;
+  max-height: 100%;
+}
+.topimg {
+  width: 100%;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.bottom-1 {
+  box-sizing: border-box;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.bottom-1:not(:first-child):not(:last-child) {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.bottomimg {
+  width: 100%;
+}
