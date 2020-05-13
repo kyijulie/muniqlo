@@ -6,7 +6,14 @@ class ShoppingBag extends Component {
     return (
       <div className={styles.cart}>
         <img className={styles.img} src={shoppingBagImg} alt="shoppingbag" />
-        <div className={styles.shoppingCartNum}>0</div>
+        <a className={styles["shopping-cart-num"]}>
+          0
+          <div className={styles["shoppingcart-dropdown"]}>
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </a>
       </div>
     );
   }
