@@ -3,6 +3,8 @@ import HoverMenu from "./HoverMenu";
 import { connect } from "react-redux";
 import styles from "../css/Nav.module.scss";
 import cx from "classnames";
+import submitButton from "../../img/submitButton.png";
+
 class MenuBar extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +20,7 @@ class MenuBar extends Component {
   }
   render() {
     return (
-      <nav className={styles.navbar}>
+      <nav className={styles.menubar}>
         <div className={styles.dropdown} to="/">
           HOME
         </div>
@@ -72,7 +74,21 @@ class MenuBar extends Component {
         </div>
         {/* figure out how to put search button on the right */}
         <div className={cx(styles.dropdown, styles["dropdown-right"])} to="/">
-          SEARCH BUTTON
+          <form className={styles["search-form"]}>
+            {/* <label> */}
+            <input
+              className={styles["search-input"]}
+              type="text"
+              placeholder="Search"
+            />
+            {/* </label> */}
+            <input
+              className={styles["search-submit"]}
+              type="image"
+              src={submitButton}
+              alt="Submit"
+            />
+          </form>
         </div>
       </nav>
     );

@@ -1,3 +1,7 @@
+.nav {
+  border-bottom: 1px solid #ddd;
+}
+
 .navbar {
   overflow: hidden;
   background-color: #fff;
@@ -6,7 +10,7 @@
     font-size: 16px;
     color: black;
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px 16px;
     text-decoration: none;
     &:hover {
       color: red;
@@ -18,25 +22,62 @@
   float: right;
 }
 
+.login {
+  flex-grow: 1;
+  flex-basis: auto;
+  margin: 0.25em 0;
+  padding: 0 1em;
+  text-align: center;
+  border-left: 1px solid #ccc;
+  background-color: #fff;
+}
+.menubar {
+  display: flex;
+  align-items: center;
+  a {
+    float: left;
+    font-size: 16px;
+    color: black;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    &:hover {
+      color: red;
+    }
+  }
+}
 .dropdown {
-  float: left;
-  overflow: hidden;
-  position: static !important;
+  display: inline-flex;
+  overflow: auto;
+  position: relative;
   font-size: 16px;
   border: none;
   outline: none;
   color: black;
-  padding: 14px 40px;
+  padding: 14px 30px;
   background-color: inherit;
   font-family: inherit;
-  margin: 0;
+  margin-top: 30px;
+  margin-bottom: 10px;
+
   &:hover {
     color: red;
-    display: block;
+    // display: block;
   }
-  .dropdown-right {
-    float: right;
-  }
+}
+.dropdown-right {
+  // display: inline-flex;
+  margin-left: auto;
+}
+
+.dropdown:not(:first-child):not(:last-child) {
+  // flex-grow: 1;
+  // flex-basis: auto;
+  // margin: 0.25em 0;
+  // padding: 0 1em;
+  text-align: center;
+  border-left: 1px solid #ccc;
+  background-color: #fff;
 }
 
 .dropdown-content {
@@ -47,7 +88,7 @@
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   &:hover {
-    display: block;
+    display: flex;
   }
   a {
     float: none;
@@ -60,4 +101,31 @@
       background-color: #ddd;
     }
   }
+}
+
+.search-form {
+  // width: 100%;
+  height: 50px;
+  padding-left: 12px;
+  // padding: 12px 10px;
+  // margin: 8px 0;
+  display: flex;
+  border: 3px solid #555;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.search-input {
+  // box-sizing: border-box;
+  border: none;
+  outline: none;
+  &:focus::-webkit-input-placeholder {
+    color: black;
+  }
+}
+
+.search-submit {
+  display: flex;
+  width: 50px;
+  height: 50px;
 }
