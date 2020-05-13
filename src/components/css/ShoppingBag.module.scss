@@ -1,0 +1,23 @@
+.cart {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  padding: 10px;
+  margin-left: 10px;
+  background-color: red;
+  width: 50px;
+  height: 50px;
+}
+
+img {
+  width: 100%;
+}
+
+.shoppingCartNum {
+  left: 10px;
+  z-index: 100;
+  position: absolute;
+  color: red;
+  font-size: 24px;
+  font-weight: bold;
+}

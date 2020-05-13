@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import styles from "../css/Nav.module.scss";
 import cx from "classnames";
 import submitButton from "../../img/submitButton.png";
+import ShoppingBag from "./ShoppingBag";
 
 class MenuBar extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class MenuBar extends Component {
   }
   render() {
     return (
+      // Fix HOVER
       <nav className={styles.menubar}>
         <div className={styles.dropdown} to="/">
           HOME
@@ -89,6 +91,7 @@ class MenuBar extends Component {
               alt="Submit"
             />
           </form>
+          <ShoppingBag />
         </div>
       </nav>
     );
