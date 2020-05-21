@@ -21,7 +21,7 @@ const Recommendations = () => {
         </p>
       </div>
       <div className={styles.bottom}>
-        <section className={styles["bottom-1"]}>
+        <div className={styles["bottom-1"]}>
           <a>
             <img className={styles.bottomimg} src={bottompic1} />
           </a>
@@ -29,8 +29,8 @@ const Recommendations = () => {
           <p>
             Find your new favorites in our wide variety of styles and colors.
           </p>
-        </section>
-        <section className={styles["bottom-1"]}>
+        </div>
+        <div className={styles["bottom-1"]}>
           <a>
             <img className={styles.bottomimg} src={bottompic2} />
           </a>
@@ -38,8 +38,8 @@ const Recommendations = () => {
           <p>
             Find your new favorites in our wide variety of styles and colors.
           </p>
-        </section>
-        <section className={styles["bottom-1"]}>
+        </div>
+        <div className={styles["bottom-1"]}>
           <a>
             <img className={styles.bottomimg} src={bottompic3} />
           </a>
@@ -47,7 +47,7 @@ const Recommendations = () => {
           <p>
             Find your new favorites in our wide variety of styles and colors.
           </p>
-        </section>
+        </div>
       </div>
     </div>
   );

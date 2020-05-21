@@ -1,6 +1,5 @@
 body {
-  font-family: "UniqloProRegular", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
+  font-family: "Oswald", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -11,10 +10,10 @@ code {
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 25px;
   font-family: Verdana;
   color: #515151;
-  float: left;
+  text-align: left;
 }
 
 img {
@@ -24,6 +23,7 @@ img {
 .main-content {
   margin-left: 50px;
   margin-right: 50px;
+  position: relative;
 }
 
 .title {

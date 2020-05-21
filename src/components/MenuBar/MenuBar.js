@@ -5,7 +5,7 @@ import styles from "../css/Nav.module.scss";
 import cx from "classnames";
 import submitButton from "../../img/submitButton.png";
 import ShoppingBag from "./ShoppingBag";
-
+import uniqloLogo from "../../img/uniqloHome.png";
 class MenuBar extends Component {
   constructor(props) {
     super(props);
@@ -29,8 +29,18 @@ class MenuBar extends Component {
             className={styles.dropdown}
             onMouseEnter={this.toggleMenu}
             title={sub}
+            key={sub}
           >
-            {sub}
+            {sub === "HOME" ? (
+              <img
+                src={uniqloLogo}
+                alt="uniqloLogo"
+                height="50px"
+                width="50px"
+              />
+            ) : (
+              sub
+            )}
           </li>
         );
       });
