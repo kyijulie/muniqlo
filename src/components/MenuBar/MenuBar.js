@@ -11,89 +11,60 @@ class MenuBar extends Component {
     super(props);
     this.state = {
       menu: null,
+      subMenu: ["HOME", "NEW", "WOMEN", "MEN", "KIDS", "BABY", "ABOUT"],
     };
     this.toggleMenu = this.toggleMenu.bind(this);
+    this.renderSubMenu = this.renderSubMenu.bind(this);
   }
   toggleMenu(e) {
     this.setState({
       menu: e.target.title,
     });
   }
+  renderSubMenu() {
+    if (this.state.subMenu.length > 0) {
+      return this.state.subMenu.map((sub) => {
+        return (
+          <li
+            className={styles.dropdown}
+            onMouseEnter={this.toggleMenu}
+            title={sub}
+          >
+            {sub}
+          </li>
+        );
+      });
+    }
+  }
+
   render() {
     return (
-      // Fix HOVER
-      <nav className={styles.menubar}>
-        <div className={styles.dropdown} to="/">
-          HOME
-        </div>
-        <div className={styles.dropdown}>
-          <span onMouseEnter={this.toggleMenu} title="NEW">
-            NEW
-          </span>
-          {this.props.menu[this.state.menu] ? (
+      <div>
+        <div className={styles.menubar}>
+          <ul>
+            {this.renderSubMenu()}{" "}
             <HoverMenu menuNames={this.props.menu[this.state.menu]} />
-          ) : null}
+          </ul>
+          <ul>
+            <li className={styles["dropdown-right"]}>
+              <form className={styles["search-form"]}>
+                <input
+                  className={styles["search-input"]}
+                  type="text"
+                  placeholder="Search"
+                />
+                <input
+                  className={styles["search-submit"]}
+                  type="image"
+                  src={submitButton}
+                  alt="Submit"
+                />
+              </form>
+            </li>
+            <ShoppingBag />
+          </ul>
         </div>
-        <div className={styles.dropdown}>
-          <span onMouseOver={this.toggleMenu} title="WOMEN">
-            WOMEN
-          </span>
-          {this.props.menu[this.state.menu] ? (
-            <HoverMenu menuNames={this.props.menu[this.state.menu]} />
-          ) : null}
-        </div>
-        <div className={styles.dropdown}>
-          <span onMouseOver={this.toggleMenu} title="MEN">
-            MEN
-          </span>
-          {this.props.menu[this.state.menu] ? (
-            <HoverMenu menuNames={this.props.menu[this.state.menu]} />
-          ) : null}
-        </div>
-        <div className={styles.dropdown} to="/kids">
-          <span onMouseOver={this.toggleMenu} title="KIDS">
-            KIDS
-          </span>
-          {this.props.menu[this.state.menu] ? (
-            <HoverMenu menuNames={this.props.menu[this.state.menu]} />
-          ) : null}
-        </div>
-        <div className={styles.dropdown} to="/baby">
-          <span onMouseOver={this.toggleMenu} title="BABY">
-            BABY
-          </span>
-          {this.props.menu[this.state.menu] ? (
-            <HoverMenu menuNames={this.props.menu[this.state.menu]} />
-          ) : null}
-        </div>
-        <div className={styles.dropdown} to="/">
-          <span onMouseOver={this.toggleMenu} title="ABOUT">
-            ABOUT
-          </span>
-          {this.props.menu[this.state.menu] ? (
-            <HoverMenu menuNames={this.props.menu[this.state.menu]} />
-          ) : null}
-        </div>
-        {/* figure out how to put search button on the right */}
-        <div className={cx(styles.dropdown, styles["dropdown-right"])} to="/">
-          <form className={styles["search-form"]}>
-            {/* <label> */}
-            <input
-              className={styles["search-input"]}
-              type="text"
-              placeholder="Search"
-            />
-            {/* </label> */}
-            <input
-              className={styles["search-submit"]}
-              type="image"
-              src={submitButton}
-              alt="Submit"
-            />
-          </form>
-          <ShoppingBag />
-        </div>
-      </nav>
+      </div>
     );
   }
 }

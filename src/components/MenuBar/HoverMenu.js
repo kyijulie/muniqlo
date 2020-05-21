@@ -8,18 +8,13 @@ class HoverMenu extends Component {
       menuNames: {},
     };
   }
-  // componentDidMount() {
-  //   this.setState({
-  //     menuNames: this.props.menuNames,
-  //   });
-  // }
   render() {
-    const menus = Object.keys(this.props.menuNames);
+    let menus;
+    if (this.props.menuNames) {
+      menus = Object.keys(this.props.menuNames);
+    }
     return (
-      <div
-        className={styles["dropdown-content"]}
-        aria-labelledby="navbarDropdown"
-      >
+      <div className={styles["dropdown-content"]} id="myDropDown">
         {menus &&
           menus.map((menu) => {
             return <a href="#">{menu}</a>;
