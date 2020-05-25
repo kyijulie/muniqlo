@@ -90,6 +90,13 @@ const Footer = () => {
       </div>
       <div className={styles["footer-follow"]}>
         <h3 className="title">FOLLOW US</h3>
+        <ul className={styles["footer-social-media"]}>
+          <li><a>Facebook</a></li>
+          <li><a>Instagram</a></li>
+          <li><a>Pinterest</a></li>
+          <li><a>YouTube</a></li>
+          <li><a>Twitter</a></li>
+        </ul>
       </div>
       <div className={styles["footer-member"]}>
         <h3 className="title">UNIQLO E-MEMBER</h3>

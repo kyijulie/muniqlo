@@ -7,28 +7,64 @@
   display: flex;
   flex-direction: row;
   text-align: left;
-  div {
+  div:first-child {
+    width: 25%;
+    padding: 20px 15px;
+    // height: inherit;
+    border-top: 1px solid;
+  }
+  div:not(:first-child) {
     width: 20%;
-    padding: 20px 10px;
-    height: inherit;
+    padding: 20px 15px;
+    // height: inherit;
     border-top: 1px solid;
   }
 }
-.footer-site {
-  position: relative;
 
-  // padding: 70px 0;
-}
-.footer-first {
-  list-style: none;
+div.footer-site {
+  // position: relative;
+  // justify-content: center;
+  // display: inline-flex;
+  padding: 20px 0;
   margin: 0;
-  // padding: 0;
+  font-size: 20px;
+}
+.footer-first li {
+  list-style: none;
+  padding-top: 25px;
+  border-bottom: 2px solid gray;
+  &:hover a {
+    color: red;
+  }
 }
 .footer-list {
   position: relative;
   list-style: none;
   margin: 0;
   padding: 0;
+  li:hover a {
+    color: red;
+  }
+}
+
+ul.footer-social-media {
+  display: inline-flex;
+  list-style: none;
+  // margin: 0;
+  padding: 0;
+  flex-flow: row wrap;
+
+  li {
+    margin-right: 15px;
+    margin-bottom: 15px;
+    width: 45px;
+    height: 45px;
+    overflow: hidden;
+    border: 1px solid gray;
+  }
+  li:hover a {
+    color: red;
+  }
 }
 
 .footer-email-input {

@@ -35,8 +35,8 @@ class MenuBar extends Component {
               <img
                 src={uniqloLogo}
                 alt="uniqloLogo"
-                height="50px"
-                width="50px"
+                height="100px"
+                width="100px"
               />
             ) : (
               sub

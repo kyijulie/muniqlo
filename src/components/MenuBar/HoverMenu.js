@@ -6,20 +6,43 @@ class HoverMenu extends Component {
     super(props);
     this.state = {
       menuNames: {},
+      emptyDropdown: [],
+      menuNamesTitle: [],
     };
+    this.dropdownList = this.dropdownList.bind(this);
   }
-  render() {
-    let menus;
-    if (this.props.menuNames) {
-      menus = Object.keys(this.props.menuNames);
+  componentWillUpdate;
+  dropdownList() {
+    let menus = this.props.menuNames;
+    let menuNames;
+    if (menus) {
+      menuNames = Object.keys(this.props.menuNames);
     }
     return (
-      <div className={styles["dropdown-content"]} id="myDropDown">
-        {menus &&
-          menus.map((menu) => {
-            return <a href="#">{menu}</a>;
-          })}
-      </div>
+      menuNames &&
+      menuNames.map((title) => {
+        if (menus[title].length > 0) {
+          return (
+            <ul title={title} className={styles["dropdown-array"]}>
+              {menus[title].map((content) => {
+                return <li>{content}</li>;
+              })}
+            </ul>
+          );
+        } else {
+          return (
+            <ul className={styles["dropdown-empty-array"]} id="myDropDown">
+              <li>{title}</li>
+            </ul>
+          );
+        }
+      })
+    );
+  }
+
+  render() {
+    return (
+      <div className={styles["dropdown-content"]}>{this.dropdownList()}</div>
     );
   }
 }
