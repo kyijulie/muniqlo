@@ -6,6 +6,8 @@
   overflow: hidden;
   width: 100vw;
   background-color: #fff;
+  padding-left: 50px;
+  padding-right: 50px;
   a {
     display: flex;
     flex-direction: row;
@@ -71,6 +73,9 @@
 }
 
 .menubar {
+  margin-left: 50px;
+  margin-right: 50px;
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;

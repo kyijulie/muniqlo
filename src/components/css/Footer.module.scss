@@ -10,13 +10,11 @@
   div:first-child {
     width: 25%;
     padding: 20px 15px;
-    // height: inherit;
     border-top: 1px solid;
   }
   div:not(:first-child) {
     width: 20%;
     padding: 20px 15px;
-    // height: inherit;
     border-top: 1px solid;
   }
 }

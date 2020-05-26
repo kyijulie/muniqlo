@@ -1,11 +1,12 @@
 import React from "react";
 import clothes1 from "../../img/clothes1.jpeg";
-// import styles from "../css/Carousel.module.scss";
+import carousel1 from "../../img/uniqloreopen.png";
+
 const Carousel = () => {
   const carouselStyle = {
     backgroundColor: "#c1e0ff",
     // width: "70%",
-    height: "500px",
+    height: "80vh",
     "margin-left": "25px",
     "margin-right": "25px",
   };
@@ -24,7 +25,7 @@ const Carousel = () => {
     // lineHeight: 1,
     // margin: "auto",
     width: "100%",
-    "margin-bottom": "50px",
+    // "margin-bottom": "50px",
   };
   const carouselIndicators = {
     bottom: "-50px",
@@ -80,14 +81,15 @@ const Carousel = () => {
       </ol>
       <div className="carousel-inner" style={carouselImg}>
         <div className="carousel-item active">
-          <img src={clothes1} className="d-block w-50" alt="clothes1" />
-          <img src={clothes1} className="d-block w-50" alt="clothes1" />
+          <a href="https://www.uniqlo.com/us/en/news/topics/2020050801/">
+            <img src={carousel1} className="d-block w-100" alt="clothes1" />
+          </a>
         </div>
-        <div className="carousel-item">
+        <div className="carousel-item" style={carouselImg}>
           <img src={clothes1} className="d-block w-100" alt="clothes2" />
         </div>
-        <div className="carousel-item">
-          <img src="..." className="d-block w-100" alt="clothes3" />
+        <div className="carousel-item" style={carouselImg}>
+          <img src="" className="d-block w-100" alt="clothes3" />
         </div>
       </div>
       <a

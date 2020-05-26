@@ -35,7 +35,7 @@ class NavBar extends Component {
             <NavLink to="/">Stores</NavLink>
             <NavLink to="/">Hiring</NavLink>
             <NavLink to="/">Help</NavLink>
-            <NavLink className={styles.login} to="/">
+            <NavLink className={styles.login} to="/login">
               Login/Register
             </NavLink>
           </div>

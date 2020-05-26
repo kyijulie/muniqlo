@@ -2,22 +2,24 @@ import React from "react";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import MenuBar from "./components/MenuBar/MenuBar";
-import { BrowserRouter } from "react-router-dom";
-import Carousel from "./components/MainCenter/Carousel";
-import Recommendations from "./components/MainCenter/Recommendations";
-import FeaturedNav from "./components/Featured/FeaturedNav";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
+import MainContent from "./components/MainCenter/MainContent";
+import Login from "./components/Login/Login";
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
         <NavBar />
-        <div className="main-content">
-          <MenuBar />
-          <Carousel />
-          <Recommendations />
-          {/* <FeaturedNav /> */}
-        </div>
+        <MenuBar />
+        <Switch>
+          <Route exact path="/" component={MainContent} />
+          {/* <Route path="/project/:id" component={ProjectDetails} /> */}
+          <Route path="/login" component={Login} />
+          {/* <Route path="/signup" component={SignUp} />
+          <Route path="/signup" component={SignUp} /> */}
+          {/* <Route path="/create" component={CreateProject} /> */}
+        </Switch>
         <Footer />
       </div>
     </BrowserRouter>
