@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import styles from "../css/Login.module.scss";
 
 class Login extends Component {
@@ -56,7 +57,9 @@ class Login extends Component {
               Create an Account and enjoy FREE SHIPPING with your 1st order
               (Free Shipping automatically applied at checkout).
             </p>
-            <button type="button">CREATE AN ACCOUNT</button>
+            <button type="button">
+              <NavLink to="/register">CREATE AN ACCOUNT</NavLink>
+            </button>
 
             <h5>WE CARE ABOUT YOUR SECURITY</h5>
             <p>
