@@ -1,12 +1,31 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "../css/Login.module.scss";
+import { connect } from "react-redux";
+import { signIn } from "../../store/actions/authActions";
 
 class Login extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      email: "",
+      password: "",
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChange(e) {
+    this.setState({
+      [e.target.id]: e.target.value,
+    });
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.signIn(this.state);
   }
   render() {
+    const { authError } = this.props;
+
     return (
       <div className={styles["login"]}>
         <div className={styles["login-header"]}>
@@ -15,12 +34,15 @@ class Login extends Component {
             Log in for access to your account, order history, and more. Or,
             create a new account.
           </p>
+          <div className={styles["auth-error-msg"]}>
+            {authError ? <p>{authError}</p> : null}
+          </div>
         </div>
         <div className={styles["login-bottom"]}>
           <div className={styles["login-form"]}>
             <h5>HAVE AN ACCOUNT?</h5>
             <p>PLEASE LOG IN WITH YOUR EMAIL ADDRESS.</p>
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <div>
                 <label for="email">EMAIL*</label>
                 <input
@@ -28,6 +50,7 @@ class Login extends Component {
                   className={styles["login-email"]}
                   type="email"
                   placeholder="Email"
+                  onChange={this.handleChange}
                 />
               </div>
               <br />
@@ -36,8 +59,9 @@ class Login extends Component {
                 <input
                   id="password"
                   className={styles["login-password"]}
-                  type="text"
+                  type="password"
                   placeholder="Password"
+                  onChange={this.handleChange}
                 />
               </div>
               <br />
@@ -57,9 +81,9 @@ class Login extends Component {
               Create an Account and enjoy FREE SHIPPING with your 1st order
               (Free Shipping automatically applied at checkout).
             </p>
-            <button type="button">
-              <NavLink to="/register">CREATE AN ACCOUNT</NavLink>
-            </button>
+            <NavLink to="/register">
+              <button type="button">CREATE AN ACCOUNT </button>
+            </NavLink>
 
             <h5>WE CARE ABOUT YOUR SECURITY</h5>
             <p>
@@ -75,4 +99,16 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    authError: state.auth.authError,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signIn: (creds) => dispatch(signIn(creds)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

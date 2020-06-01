@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "../css/Nav.module.scss";
 import cx from "classnames";
+import { connect } from "react-redux";
+import SignedOutLinks from "./SignedOutLinks";
+import SignedInLinks from './SignedInLinks';
 
 class NavBar extends Component {
   constructor(props) {
@@ -19,6 +22,8 @@ class NavBar extends Component {
   }
 
   render() {
+    console.log("this props auth", this.props.auth);
+    const links = this.props.auth.uid ? <SignedInLinks /> : <SignedOutLinks />
     return (
       <div className={styles.nav}>
         <nav className={styles.navbar}>
@@ -35,9 +40,10 @@ class NavBar extends Component {
             <NavLink to="/">Stores</NavLink>
             <NavLink to="/">Hiring</NavLink>
             <NavLink to="/">Help</NavLink>
-            <NavLink className={styles.login} to="/login">
+            {links}
+            {/* <NavLink className={styles.login} to="/login">
               Login/Register
-            </NavLink>
+            </NavLink> */}
           </div>
         </nav>
       </div>
@@ -45,4 +51,10 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+  };
+};
+
+export default connect(mapStateToProps)(NavBar);

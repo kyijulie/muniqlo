@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import cx from "classnames";
+
 import styles from "../css/Register.module.scss";
 
 class Register extends Component {
@@ -50,7 +53,9 @@ class Register extends Component {
         </div>
         <div className={styles["register-login"]}>
           <p>DO YOU HAVE AN EXISTING UNIQLO ACCOUNT?</p>
-          <button>LOGIN -></button>
+          <NavLink to="/login">
+            <button>LOGIN -> </button>
+          </NavLink>
         </div>
         <div className={styles["register-form"]}>
           <h5>ENTER YOUR INFORMATION BELOW</h5>
@@ -60,81 +65,99 @@ class Register extends Component {
             <br />
             *=REQUIRED ENTRY
           </p>
-          <form>
+          <form className={styles["register-container"]}>
             <div>
-              <label for="email">EMAIL ADDRESS*</label>
-              <div>
+              <div className={styles["email-description"]}>
+                <p>EMAIL ADDRESS*</p>
+              </div>
+              <div className={styles["register-input"]}>
                 <input
                   id="email"
                   className="register-email"
                   type="email"
-                  onBlur={(e) => this.checkInput(e)}
+                  onBlur={this.checkInput}
                   required
                 />
                 <p id="email alert"></p>
               </div>
             </div>
             <div>
-              <label for="confirm-email">CONFIRM EMAIL ADDRESS*</label>
-              <div>
+              <div className={styles["grid-description"]}>
+                <p>CONFIRM EMAIL ADDRESS*</p>
+              </div>
+              <div className={styles["register-input"]}>
                 <input
                   id="confirm-email"
                   className="confirm-email"
                   type="email"
-                  onBlur={this.confirmValue}
+                  // onBlur={this.confirmValue}
                   required
                 />
-                <p>
+                {/* <p>
                   Both email and confirm email must match, please check and try
                   again.
-                </p>
+                </p> */}
               </div>
             </div>
             <div>
-              <label for="fname">FIRST NAME*</label>
               <div>
+                <p>FIRST NAME*</p>
+              </div>
+              <div className={styles["register-input"]}>
                 <input
                   id="fname"
                   className="register-fname"
                   type="text"
-                  onBlur={(e) => this.checkInput(e)}
+                  onBlur={this.checkInput}
                   required
                 />
                 <p id="fname alert"></p>
               </div>
             </div>
             <div>
-              <label for="lname">LAST NAME*</label>
               <div>
+                <p>LAST NAME*</p>
+              </div>
+              <div className={styles["register-input"]}>
                 <input
                   id="lname"
                   className="register-lname"
                   type="text"
-                  onBlur={(e) => this.checkInput(e)}
+                  onBlur={this.checkInput}
                   required
                 />
                 <p id="lname alert"></p>
               </div>
             </div>
             <div>
-              <p>GENDER*</p>
-
-              <input type="radio" id="male" name="gender" value="MALE" />
-              <label for="male">MALE</label>
-              <input type="radio" id="female" name="gender" value="FEMALE" />
-              <label for="female">FEMALE</label>
-              <input
-                type="radio"
-                id="decline"
-                value="DECLINE"
-                name="gender"
-                checked
-              />
-              <label for="decline">DECLINE TO STATE / OTHER</label>
-            </div>
-            <div>
-              <label for="lname">BIRTHDAY*</label>
               <div>
+                <p>GENDER</p>
+              </div>
+              <div>
+                <input type="radio" id="male" name="gender" value="MALE" />
+                <label for="male">MALE</label>
+                <input type="radio" id="female" name="gender" value="FEMALE" />
+                <label for="female">FEMALE</label>
+                <input
+                  type="radio"
+                  id="decline"
+                  value="DECLINE"
+                  name="gender"
+                  checked
+                />
+                <label for="decline">DECLINE TO STATE / OTHER</label>
+              </div>
+            </div>
+            <div className={styles["register-text"]}>
+              <div className={styles["register-flex"]}>
+                <p>BIRTHDAY</p>
+              </div>
+              <div
+                className={cx(
+                  styles["register-input"],
+                  styles["register-flex"]
+                )}
+              >
                 <input
                   type="text"
                   name="input"
@@ -144,36 +167,45 @@ class Register extends Component {
                   title="Enter a date in this format YYYY-MM-DD"
                 />
               </div>
+              {/* <div className={styles["register-flex"]}>Example: 03/28/1968</div> */}
             </div>
             <div>
-              <label for="password">PASSWORD*</label>
               <div>
+                <p>PASSWORD*</p>
+              </div>
+              <div className={styles["register-input"]}>
                 <input
                   id="password"
                   className="register-password"
                   type="text"
-                  onBlur={(e) => this.checkInput(e)}
+                  onBlur={this.checkInput}
+                  placeholder="8-20 characters with numbers, letters & special characters"
                   required
                 />
                 <p id="password alert"></p>
               </div>
             </div>
             <div>
-              <label for="confirm-password">CONFIRM PASSWORD*</label>
               <div>
+                <p>CONFIRM PASSWORD*</p>
+              </div>
+              <div className={styles["register-input"]}>
                 <input
                   id="confirm-password"
                   className="confirm-password"
                   type="text"
-                  onBlur={this.confirmValue}
                   required
                 />
               </div>
             </div>
           </form>
-          <div>
-            <input className="register-submit" type="Submit" value="SUBMIT" />
-          </div>
+        </div>
+        <div>
+          <input
+            className={styles["register-submit"]}
+            type="Submit"
+            value="SAVE"
+          />
         </div>
       </div>
     );

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import HoverMenu from "./HoverMenu";
 import { connect } from "react-redux";
 import styles from "../css/Nav.module.scss";
-import cx from "classnames";
 import submitButton from "../../img/submitButton.png";
 import ShoppingBag from "./ShoppingBag";
 import uniqloLogo from "../../img/uniqloHome.png";
