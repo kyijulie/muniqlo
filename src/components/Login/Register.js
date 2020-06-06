@@ -1,14 +1,44 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import cx from "classnames";
+import { connect } from "react-redux";
+import { signUp } from "../../store/actions/authActions";
 
 import styles from "../css/Register.module.scss";
 
 class Register extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      email: "",
+      password: "",
+      fname: "",
+      lname: "",
+      gender: "decline",
+      birthday: "",
+    };
     this.confirmValue = this.confirmValue.bind(this);
     this.checkInput = this.checkInput.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.signUp(this.state);
+  }
+  handleChange(e) {
+    if (
+      e.target.id === "female" ||
+      e.target.id === "male" ||
+      e.target.id === "decline"
+    ) {
+      this.setState({
+        gender: e.target.value,
+      });
+    }
+    this.setState({
+      [e.target.id]: e.target.value,
+    });
   }
   confirmValue(e) {
     let str = e.target.id.toString();
@@ -16,7 +46,21 @@ class Register extends Component {
     let text = document.getElementById(e.target.id).value;
     let conftext = document.getElementById(arr[1]).value;
     if (text != conftext) {
-      alert("Values Not Matching!");
+      let text;
+      switch (e.target.id) {
+        case "confirm-email":
+          text =
+            "Both email and confirm email must match, please check and try again.";
+          break;
+        case "confirm-password":
+          text =
+            "Both password and confirm password must match, please check and try again.";
+          break;
+      }
+      document.getElementById(e.target.id).value = "";
+      document.getElementById(e.target.id + " alert").innerHTML = text;
+    } else {
+      document.getElementById(e.target.id + " alert").innerHTML = "";
     }
   }
   checkInput(e) {
@@ -42,6 +86,8 @@ class Register extends Component {
     }
   }
   render() {
+    const { auth, authError } = this.props;
+    if (auth.uid) return <Redirect to="/" />;
     return (
       <div className={styles["register"]}>
         <div className={styles["register-header"]}>
@@ -57,6 +103,9 @@ class Register extends Component {
             <button>LOGIN -> </button>
           </NavLink>
         </div>
+        <div className={styles["auth-error-msg"]}>
+          {authError ? <p>{authError}</p> : null}
+        </div>
         <div className={styles["register-form"]}>
           <h5>ENTER YOUR INFORMATION BELOW</h5>
           <p>
@@ -65,7 +114,10 @@ class Register extends Component {
             <br />
             *=REQUIRED ENTRY
           </p>
-          <form className={styles["register-container"]}>
+          <form
+            className={styles["register-container"]}
+            onSubmit={this.handleSubmit}
+          >
             <div>
               <div className={styles["email-description"]}>
                 <p>EMAIL ADDRESS*</p>
@@ -76,6 +128,7 @@ class Register extends Component {
                   className="register-email"
                   type="email"
                   onBlur={this.checkInput}
+                  onChange={this.handleChange}
                   required
                 />
                 <p id="email alert"></p>
@@ -90,13 +143,10 @@ class Register extends Component {
                   id="confirm-email"
                   className="confirm-email"
                   type="email"
-                  // onBlur={this.confirmValue}
+                  onBlur={this.confirmValue}
                   required
                 />
-                {/* <p>
-                  Both email and confirm email must match, please check and try
-                  again.
-                </p> */}
+                <p id="confirm-email alert"></p>
               </div>
             </div>
             <div>
@@ -109,6 +159,7 @@ class Register extends Component {
                   className="register-fname"
                   type="text"
                   onBlur={this.checkInput}
+                  onChange={this.handleChange}
                   required
                 />
                 <p id="fname alert"></p>
@@ -124,6 +175,7 @@ class Register extends Component {
                   className="register-lname"
                   type="text"
                   onBlur={this.checkInput}
+                  onChange={this.handleChange}
                   required
                 />
                 <p id="lname alert"></p>
@@ -134,16 +186,31 @@ class Register extends Component {
                 <p>GENDER</p>
               </div>
               <div>
-                <input type="radio" id="male" name="gender" value="MALE" />
+                <input
+                  id="male"
+                  type="radio"
+                  value="male"
+                  name="male"
+                  checked={this.state.gender === "male"}
+                  onChange={this.handleChange}
+                />
                 <label for="male">MALE</label>
-                <input type="radio" id="female" name="gender" value="FEMALE" />
+                <input
+                  type="radio"
+                  id="female"
+                  value="female"
+                  name="female"
+                  checked={this.state.gender === "female"}
+                  onChange={this.handleChange}
+                />
                 <label for="female">FEMALE</label>
                 <input
                   type="radio"
                   id="decline"
-                  value="DECLINE"
-                  name="gender"
-                  checked
+                  value="decline"
+                  name="decline"
+                  checked={this.state.gender === "decline"}
+                  onChange={this.handleChange}
                 />
                 <label for="decline">DECLINE TO STATE / OTHER</label>
               </div>
@@ -159,12 +226,11 @@ class Register extends Component {
                 )}
               >
                 <input
-                  type="text"
-                  name="input"
-                  placeholder="YYYY-MM-DD"
-                  required
-                  pattern="(?:19|20)\[0-9\]{2}-(?:(?:0\[1-9\]|1\[0-2\])-(?:0\[1-9\]|1\[0-9\]|2\[0-9\])|(?:(?!02)(?:0\[1-9\]|1\[0-2\])-(?:30))|(?:(?:0\[13578\]|1\[02\])-31))"
-                  title="Enter a date in this format YYYY-MM-DD"
+                  id="birthday"
+                  name="birthday"
+                  type="date"
+                  // pattern="(?:19|20)\[0-9\]{2}-(?:(?:0\[1-9\]|1\[0-2\])-(?:0\[1-9\]|1\[0-9\]|2\[0-9\])|(?:(?!02)(?:0\[1-9\]|1\[0-2\])-(?:30))|(?:(?:0\[13578\]|1\[02\])-31))"
+                  onChange={this.handleChange}
                 />
               </div>
               {/* <div className={styles["register-flex"]}>Example: 03/28/1968</div> */}
@@ -177,8 +243,9 @@ class Register extends Component {
                 <input
                   id="password"
                   className="register-password"
-                  type="text"
+                  type="password"
                   onBlur={this.checkInput}
+                  onChange={this.handleChange}
                   placeholder="8-20 characters with numbers, letters & special characters"
                   required
                 />
@@ -193,23 +260,35 @@ class Register extends Component {
                 <input
                   id="confirm-password"
                   className="confirm-password"
-                  type="text"
+                  type="password"
+                  onBlur={this.confirmValue}
                   required
                 />
+                <p id="confirm-password alert"></p>
               </div>
             </div>
+            <input
+              className={styles["register-submit"]}
+              type="Submit"
+              value="SAVE"
+            />
           </form>
         </div>
-        <div>
-          <input
-            className={styles["register-submit"]}
-            type="Submit"
-            value="SAVE"
-          />
-        </div>
+        <div></div>
       </div>
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+    authError: state.auth.authError,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: (newUser) => dispatch(signUp(newUser)),
+  };
+};
 
-export default Register;
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

@@ -7,15 +7,15 @@ const Carousel = () => {
     backgroundColor: "#c1e0ff",
     // width: "70%",
     height: "80vh",
-    "margin-left": "25px",
-    "margin-right": "25px",
+    marginLeft: "25px",
+    marginRight: "25px",
   };
   const carouselControlsLeft = {
-    "margin-left": "-125px",
+    marginLeft: "-125px",
     filter: "invert(100%)",
   };
   const carouselControlsRight = {
-    "margin-right": "-125px",
+    marginRight: "-125px",
     filter: "invert(100%)",
   };
   const carouselImg = {
@@ -29,7 +29,7 @@ const Carousel = () => {
   };
   const carouselIndicators = {
     bottom: "-50px",
-    "background-color": "transparent",
+    backgroundColor: "transparent",
   };
   const carouselIndicatorsLI = {
     // width: "4px",
@@ -39,12 +39,12 @@ const Carousel = () => {
     width: "4px",
     height: "4px",
     margin: "10px",
-    "text-indent": "0",
+    textIndent: "0",
     cursor: "pointer",
     border: "none",
-    "border-radius": "50%",
-    "background-color": "black",
-    "box-shadow": "inset 1px 1px 1px 1px rgba(0,0,0,0.5)",
+    borderRadius: "50%",
+    backgroundColor: "black",
+    boxShadow: "inset 1px 1px 1px 1px rgba(0,0,0,0.5)",
   };
   //   .carousel-indicators li {
   // }

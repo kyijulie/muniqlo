@@ -8,6 +8,7 @@ import MainContent from "./components/MainCenter/MainContent";
 import Login from "./components/Login/Login";
 import Register from "./components/Login/Register";
 import AuthRoute from "./components/NavBar/AuthRoute";
+import ScrollToTop from "./components/Assets/ScrollToTop";
 
 class App extends Component {
   constructor(props) {
@@ -20,10 +21,11 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
+          <ScrollToTop />
           <NavBar />
           <MenuBar />
           <Switch>
-            <AuthRoute path="/home" render={MainContent} type="private" />
+            <AuthRoute path="/home" render={MainContent} type="private" />{" "}
             <AuthRoute path="/login" type="guest">
               <Login />
             </AuthRoute>

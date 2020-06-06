@@ -4,7 +4,7 @@ import styles from "../css/Nav.module.scss";
 import cx from "classnames";
 import { connect } from "react-redux";
 import SignedOutLinks from "./SignedOutLinks";
-import SignedInLinks from './SignedInLinks';
+import SignedInLinks from "./SignedInLinks";
 
 class NavBar extends Component {
   constructor(props) {
@@ -22,8 +22,7 @@ class NavBar extends Component {
   }
 
   render() {
-    console.log("this props auth", this.props.auth);
-    const links = this.props.auth.uid ? <SignedInLinks /> : <SignedOutLinks />
+    const links = this.props.auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
     return (
       <div className={styles.nav}>
         <nav className={styles.navbar}>
