@@ -5,6 +5,12 @@ import cx from "classnames";
 import { connect } from "react-redux";
 import SignedOutLinks from "./SignedOutLinks";
 import SignedInLinks from "./SignedInLinks";
+import { ReactComponent as Location } from "../../icons/icon-location.svg";
+import { ReactComponent as Help } from "../../icons/icon-help.svg";
+import { ReactComponent as Briefcase } from "../../icons/icon-briefcase.svg";
+import { ReactComponent as Dollar } from "../../icons/icon-currency-dollar.svg";
+import { ReactComponent as Group } from "../../icons/icon-group.svg";
+import { ReactComponent as Inbox } from "../../icons/icon-inbox.svg";
 
 class NavBar extends Component {
   constructor(props) {
@@ -33,12 +39,31 @@ class NavBar extends Component {
             <a className={styles.icon} onClick={this.clickIcon}>
               <i className="fa fa-bars"></i>
             </a>
-            <NavLink to="/">GET $10</NavLink>
-            <NavLink to="/">GiftCard</NavLink>
-            <NavLink to="/">Bulk</NavLink>
-            <NavLink to="/">Stores</NavLink>
-            <NavLink to="/">Hiring</NavLink>
-            <NavLink to="/">Help</NavLink>
+            <NavLink to="/">
+              <Group />
+              GET $10
+            </NavLink>
+            <NavLink to="/">
+              {" "}
+              <Dollar />
+              GiftCard
+            </NavLink>
+            <NavLink to="/">
+              <Inbox />
+              Bulk
+            </NavLink>
+            <NavLink to="/">
+              <Location />
+              Stores
+            </NavLink>
+            <NavLink to="/">
+              <Briefcase />
+              Hiring
+            </NavLink>
+            <NavLink to="/">
+              <Help />
+              Help
+            </NavLink>
             {links}
             {/* <NavLink className={styles.login} to="/login">
               Login/Register

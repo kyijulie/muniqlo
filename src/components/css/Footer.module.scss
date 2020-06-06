@@ -9,7 +9,7 @@
   text-align: left;
   div:first-child {
     width: 25%;
-    padding: 20px 15px;
+    // padding: 20px 15px;
     border-top: 1px solid;
   }
   div:not(:first-child) {
@@ -28,9 +28,12 @@ div.footer-site {
   font-size: 20px;
 }
 .footer-first li {
+  display: flex;
+  align-items: center;
   list-style: none;
   padding-top: 25px;
   border-bottom: 2px solid gray;
+
   &:hover a {
     color: red;
   }
