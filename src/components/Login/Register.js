@@ -267,14 +267,16 @@ class Register extends Component {
                 <p id="confirm-password alert"></p>
               </div>
             </div>
-            <input
-              className={styles["register-submit"]}
-              type="Submit"
-              value="SAVE"
-            />
+            <div>
+              {" "}
+              <input
+                className={styles["register-submit"]}
+                type="Submit"
+                value="SAVE"
+              />
+            </div>
           </form>
         </div>
-        <div></div>
       </div>
     );
   }

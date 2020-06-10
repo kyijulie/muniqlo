@@ -9,6 +9,7 @@ import Login from "./components/Login/Login";
 import Register from "./components/Login/Register";
 import AuthRoute from "./components/NavBar/AuthRoute";
 import ScrollToTop from "./components/Assets/ScrollToTop";
+import ProductPage from "./components/ProductPage/ProductPage";
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +39,10 @@ class App extends Component {
             </Route> */}
             {/* <Route path="/login" component={Login} /> */}
             <Route path="/register" component={Register} />
+            <Route
+              path="/women-chiffon-pleated-long-skirt-online-exclusive"
+              component={() => <ProductPage clothesId="425371" />}
+            />
           </Switch>
           <Footer />
         </div>

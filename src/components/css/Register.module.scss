@@ -49,7 +49,6 @@ p {
   text-align: left;
   padding: 45px 0;
   margin-bottom: 50px;
-  border-bottom: 5px solid black;
 
   form {
     padding-right: 20px;
@@ -101,6 +100,7 @@ p {
   font-weight: bold;
   outline: none;
   float: right;
+  border-top: 5px solid black;
 }
 
 .auth-error-msg {

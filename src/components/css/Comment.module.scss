@@ -1,0 +1,93 @@
+.comment-container {
+  display: flex;
+  padding: 45px 15px;
+}
+
+.comment-user-info {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-right: 10px;
+  .comment-user-id {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+.comment-details {
+  width: 60%;
+  text-align: left;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: flex-start;
+  padding-right: 30px;
+  .comment-title {
+    padding-bottom: 20px;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+}
+.comment-rating {
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.comment-star-container {
+  display: inline-flex;
+  margin-bottom: 10px;
+}
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+  color: gray;
+}
+
+.stars-inner-1,
+.stars-inner-2,
+.stars-inner-3,
+.stars-inner-4,
+.stars-inner-5 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 1;
+}
+
+.stars-inner-1::before {
+  content: "\f005";
+  color: red;
+}
+
+.stars-inner-2::before {
+  content: "\f005 \f005";
+  color: red;
+}
+
+.stars-inner-3::before {
+  content: "\f005 \f005 \f005";
+  color: red;
+}
+
+.stars-inner-4::before {
+  content: "\f005 \f005 \f005 \f005";
+  color: red;
+}
+
+.stars-inner-5::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: red;
+}
