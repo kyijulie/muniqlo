@@ -5,9 +5,6 @@ import { firestoreConnect } from "react-redux-firebase";
 import style from "../css/Comment.module.scss";
 
 const Comment = (props) => {
-  console.log("hello", props);
-
-  const { comments } = props;
   const renderFit = (comment) => {
     if (comment.fit) {
       return (
@@ -76,10 +73,6 @@ const Comment = (props) => {
   };
   const renderQuality = (comment) => {
     if (comment.quality) {
-      // document.getElementById(
-      //   `comment-quality-${comment.quality}`
-      // ).checked = true;
-      console.log(typeof comment.quality);
       return (
         <div className={style["comment-quality"]}>
           {" "}
@@ -98,7 +91,7 @@ const Comment = (props) => {
                 <li>
                   <input
                     type="radio"
-                    name={`radio-length-${comment.user}`}
+                    name={`radio-quality-${comment.user}`}
                     disabled
                     checked={i + 1 === comment.quality ? true : false}
                   />
@@ -111,47 +104,51 @@ const Comment = (props) => {
       );
     }
   };
-  return (
-    <>
-      {comments &&
-        comments.map((comment) => {
-          return (
-            <div className={style["comment-container"]}>
-              <div className={style["comment-user-info"]}>
-                <span className={style["comment-user-id"]}>{comment.user}</span>
-                <span className={style["comment-user-location"]}>
-                  {comment.location}
-                </span>
-              </div>
-              <div className={style["comment-details"]}>
-                <div className={style["comment-title"]}>{comment.title}</div>
-                <div className={style["comment-content"]}>
-                  {comment.comment}
-                </div>
-              </div>
-              <div className={style["comment-rating"]}>
-                <div className={style["comment-star-title"]}>RATING</div>
-                <div className={style["comment-star-container"]}>
-                  <div className={style["stars-outer"]}>
-                    <div
-                      className={style[`stars-inner-${comment.rating}`]}
-                    ></div>
-                  </div>
-                </div>
-                {renderFit(comment)}
-                {renderLength(comment)}
-                {renderQuality(comments)}
+
+  if (props.comments) {
+    let comments = props.comments;
+    let commentsArray = Object.keys(comments);
+    return commentsArray.map((comment, i) => {
+      return (
+        <div className={style["comment-container"]}>
+          <div className={style["comment-user-info"]}>
+            <span className={style["comment-user-id"]}>
+              {comments[comment].user}
+            </span>
+            <span className={style["comment-user-location"]}>
+              {comment.location}
+            </span>
+          </div>
+          <div className={style["comment-details"]}>
+            <div className={style["comment-title"]}>
+              {comments[comment].title}
+            </div>
+            <div className={style["comment-content"]}>
+              {comments[comment].comment}
+            </div>
+          </div>
+          <div className={style["comment-rating"]}>
+            <div className={style["comment-star-title"]}>RATING</div>
+            <div className={style["comment-star-container"]}>
+              <div className={style["stars-outer"]}>
+                <div
+                  className={style[`stars-inner-${comments[comment].rating}`]}
+                ></div>
               </div>
             </div>
-          );
-        })}
-    </>
-  );
+            {renderFit(comments[comment])}
+            {renderLength(comments[comment])}
+            {renderQuality(comments[comment])}
+          </div>
+        </div>
+      );
+    });
+  } else {
+    return <div />;
+  }
 };
 
-// export default Comment;
 const mapStateToProps = (state) => {
-  console.log("this is state", state.firestore.data);
   const comments = state.firestore.data.comments;
   return {
     comments,
@@ -168,11 +165,4 @@ export default compose(
       storeAs: "comments",
     },
   ])
-  // firestoreConnect([
-  //   {
-  //     collection: "clothes",
-  //     doc: "425371",
-  //     subcollections: [{ collection: "comments" }],
-  //   },
-  // ])
 )(Comment);
