@@ -1,0 +1,36 @@
+.product-container {
+  display: flex;
+}
+
+.col {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 1rem;
+}
+
+.sidebar {
+  flex: 1;
+  text-align: left;
+  font-size: 12px;
+  h2 {
+    font-size: 24px;
+  }
+  .price {
+    font-size: 32px;
+  }
+}
+
+.main {
+  flex: 2;
+}
+
+.color-list {
+  display: flex;
+  padding: 0;
+}
+.color-selection {
+  border-radius: 50%;
+  width: 30px;
+  overflow: hidden;
+  margin-right: 15px;
+}
