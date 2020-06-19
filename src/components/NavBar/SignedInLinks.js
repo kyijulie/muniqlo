@@ -6,9 +6,9 @@ import { signOut } from "../../store/actions/authActions";
 
 const SignedInLinks = (props) => {
   return (
-    <a className={styles.login} onClick={props.signOut}>
+    <NavLink className={styles.login} to="/" onClick={props.signOut}>
       Signout
-    </a>
+    </NavLink>
   );
 };
 

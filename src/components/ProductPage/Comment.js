@@ -21,7 +21,7 @@ const Comment = (props) => {
                 labelFit = <label />;
               }
               return (
-                <li>
+                <li key={`fit-` + i}>
                   <input
                     type="radio"
                     name={`radio-fit-${comment.user}`}
@@ -55,7 +55,7 @@ const Comment = (props) => {
                 labelFit = <label />;
               }
               return (
-                <li>
+                <li key={`length-` + i}>
                   <input
                     type="radio"
                     name={`radio-length-${comment.user}`}
@@ -88,7 +88,7 @@ const Comment = (props) => {
                 labelFit = <label />;
               }
               return (
-                <li>
+                <li key={`quality-` + i}>
                   <input
                     type="radio"
                     name={`radio-quality-${comment.user}`}

@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <ScrollToTop />
+          {/* <ScrollToTop /> */}
           <NavBar />
           <MenuBar />
           <Switch>

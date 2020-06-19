@@ -4,6 +4,7 @@ import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import style from "../css/Product.module.scss";
 import cx from "classnames";
+import Size from './Size'
 import Colors from "./Colors";
 
 const Product = (props) => {
@@ -22,14 +23,16 @@ const Product = (props) => {
             renders the sidebar at 25% and the main content area as 75%
           </p>
         </section>
-        <aside class={cx(style["col"], style["sidebar"])}>
+        <aside className={cx(style["col"], style["sidebar"])}>
           <h2>{clothes.title}</h2>
           <p>stars 49 reviews</p>
           <p className={style.price}>$ {clothes.price}</p>
           <div>
             <Colors clothesId={props.clothesId} />
           </div>
-          <p>size</p>
+          <div>
+            <Size />
+          </div>
           <p>add to bag and quantity</p>
           <div>
             <p>product detail</p>

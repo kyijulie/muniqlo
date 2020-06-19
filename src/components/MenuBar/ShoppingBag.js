@@ -12,9 +12,9 @@ class ShoppingBag extends Component {
   }
   toggleShoppingCart() {
     if (this.state.items.length > 0) {
-      return this.state.items.map((item) => {
+      return this.state.items.map((item, i) => {
         return (
-          <li>
+          <li key={`shopping-cart-` + i}>
             <a href="#link1">Link 1</a>
           </li>
         );

@@ -17,6 +17,8 @@
   }
   .price {
     font-size: 32px;
+    padding: 10px 0;
+    border-bottom: 1px solid #c8c8c8;
   }
 }
 
@@ -30,7 +32,102 @@
 }
 .color-selection {
   border-radius: 50%;
-  width: 30px;
+  width: 35px;
+  height: 35px;
   overflow: hidden;
   margin-right: 15px;
+  box-shadow: 0 0 3px #fff;
+  border: 3px solid #fff;
+  border-radius: 18px;
+}
+.color-selection:hover {
+  background-color: #f80;
+  border: 3px solid #fff;
+  border-radius: 18px;
+  box-shadow: 0 0 3px gray;
+}
+.show-color {
+  font-size: 18px;
+  display: flex;
+  p {
+    font-size: 18px;
+
+    font-style: italic;
+  }
+}
+.active-color {
+  background-color: #f80;
+  border: 3px solid #fff;
+  border-radius: 18px;
+  box-shadow: 0 0 3px black;
+}
+.size-title {
+  font-size: 18px;
+}
+.size-list {
+  display: flex;
+  padding: 0;
+  justify-content: space-between;
+  list-style: none;
+  li {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #c8c8c8;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    div {
+      display: inline-flex;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+    div:not(.out-stock):not(.active-size):hover {
+      background-color: #c8c8c8;
+      border: 1px solid black;
+    }
+  }
+}
+.size-link {
+  font-size: 15px;
+  font-style: bold;
+}
+
+.out-stock {
+  color: #c8c8c8;
+  background: linear-gradient(
+      to top left,
+      rgba(200, 200, 200, 0) 0%,
+      rgba(200, 200, 200, 0) calc(50% - 0.8px),
+      rgba(200, 200, 200, 1) 50%,
+      rgba(200, 200, 200, 0) calc(50% + 0.8px),
+      rgba(200, 200, 200, 0) 100%
+    ),
+    linear-gradient(
+      to top right,
+      rgba(200, 200, 200, 0) 0%,
+      rgba(200, 200, 200, 0) calc(50% - 0.8px),
+      rgba(200, 200, 200, 1) 50%,
+      rgba(200, 200, 200, 0) calc(50% + 0.8px),
+      rgba(200, 200, 200, 0) 100%
+    );
+}
+
+.active-size {
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+  box-shadow: 0 0 3px black;
+}
+
+.size-container {
+  padding: 10px 0;
+  border-bottom: 1px solid #c8c8c8;
+}
+
+.color-container {
+  padding: 10px 0;
+  border-bottom: 1px solid #c8c8c8;
 }
