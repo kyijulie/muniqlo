@@ -11,19 +11,17 @@ class Login extends Component {
       email: "",
       password: "",
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleChange(e) {
+  handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value,
     });
-  }
-  handleSubmit(e) {
+  };
+  handleSubmit = (e) => {
     e.preventDefault();
     alert("submitted");
     this.props.signIn(this.state);
-  }
+  };
   render() {
     const { authError } = this.props;
 

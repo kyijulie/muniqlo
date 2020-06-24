@@ -1,14 +1,16 @@
 import { combineReducers } from "redux";
 import menuReducer from "./menuReducer";
 import authReducer from "./authReducer";
-import colorReducer from "./colorReducer";
+import productReducer from "./productReducer";
+import shoppingBagReducer from "./shoppingBagReducer";
 import { firestoreReducer } from "redux-firestore";
 import { firebaseReducer } from "react-redux-firebase";
 
 const rootReducer = combineReducers({
   auth: authReducer,
   menu: menuReducer,
-  color: colorReducer,
+  product: productReducer,
+  shoppingbag: shoppingBagReducer,
   firestore: firestoreReducer,
   firebase: firebaseReducer,
 });

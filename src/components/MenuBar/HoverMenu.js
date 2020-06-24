@@ -9,10 +9,8 @@ class HoverMenu extends Component {
       emptyDropdown: [],
       menuNamesTitle: [],
     };
-    this.dropdownList = this.dropdownList.bind(this);
   }
-  componentWillUpdate;
-  dropdownList() {
+  dropdownList = () => {
     let menus = this.props.menuNames;
     let menuNames;
     if (menus) {
@@ -38,7 +36,7 @@ class HoverMenu extends Component {
         }
       })
     );
-  }
+  };
 
   render() {
     return (

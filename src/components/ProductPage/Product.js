@@ -4,8 +4,10 @@ import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import style from "../css/Product.module.scss";
 import cx from "classnames";
-import Size from './Size'
+import Size from "./Size";
 import Colors from "./Colors";
+import Quantity from "./Quantity";
+import AddToBag from "./AddToBag";
 
 const Product = (props) => {
   const { clothes } = props;
@@ -27,13 +29,10 @@ const Product = (props) => {
           <h2>{clothes.title}</h2>
           <p>stars 49 reviews</p>
           <p className={style.price}>$ {clothes.price}</p>
-          <div>
-            <Colors clothesId={props.clothesId} />
-          </div>
-          <div>
-            <Size />
-          </div>
-          <p>add to bag and quantity</p>
+          <Colors clothesId={props.clothesId} />
+          <Size />
+          <Quantity />
+          <AddToBag title={clothes.title} clothesId={props.clothesId} />
           <div>
             <p>product detail</p>
             <p>materials and care</p>

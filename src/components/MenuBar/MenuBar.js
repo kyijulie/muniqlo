@@ -12,15 +12,13 @@ class MenuBar extends Component {
       menu: null,
       subMenu: ["HOME", "NEW", "WOMEN", "MEN", "KIDS", "BABY", "ABOUT"],
     };
-    this.toggleMenu = this.toggleMenu.bind(this);
-    this.renderSubMenu = this.renderSubMenu.bind(this);
   }
-  toggleMenu(e) {
+  toggleMenu = (e) => {
     this.setState({
       menu: e.target.title,
     });
-  }
-  renderSubMenu() {
+  };
+  renderSubMenu = () => {
     if (this.state.subMenu.length > 0) {
       return this.state.subMenu.map((sub) => {
         return (
@@ -44,7 +42,7 @@ class MenuBar extends Component {
         );
       });
     }
-  }
+  };
 
   render() {
     return (

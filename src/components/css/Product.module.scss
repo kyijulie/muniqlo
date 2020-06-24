@@ -131,3 +131,16 @@
   padding: 10px 0;
   border-bottom: 1px solid #c8c8c8;
 }
+
+.product-submit {
+  color: white;
+  font-size: 18px;
+  background-color: red;
+  padding: 7px;
+  width: 100%;
+  font-weight: bold;
+  &:disabled {
+    // color: black;
+    background-color: #ffcccc;
+  }
+}

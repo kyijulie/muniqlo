@@ -17,16 +17,12 @@ class Register extends Component {
       gender: "decline",
       birthday: "",
     };
-    this.confirmValue = this.confirmValue.bind(this);
-    this.checkInput = this.checkInput.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.signUp(this.state);
-  }
-  handleChange(e) {
+  };
+  handleChange = (e) => {
     if (
       e.target.id === "female" ||
       e.target.id === "male" ||
@@ -39,8 +35,8 @@ class Register extends Component {
     this.setState({
       [e.target.id]: e.target.value,
     });
-  }
-  confirmValue(e) {
+  };
+  confirmValue = (e) => {
     let str = e.target.id.toString();
     let arr = str.split("-");
     let text = document.getElementById(e.target.id).value;
@@ -62,8 +58,8 @@ class Register extends Component {
     } else {
       document.getElementById(e.target.id + " alert").innerHTML = "";
     }
-  }
-  checkInput(e) {
+  };
+  checkInput = (e) => {
     if (document.getElementById(e.target.id).value == "") {
       let text;
       switch (e.target.id) {
@@ -84,7 +80,7 @@ class Register extends Component {
     } else {
       document.getElementById(e.target.id + " alert").innerHTML = "";
     }
-  }
+  };
   render() {
     const { auth, authError } = this.props;
     if (auth.uid) return <Redirect to="/" />;

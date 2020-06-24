@@ -1,33 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import style from "../css/Product.module.scss";
 import cx from "classnames";
+import { getSize } from "../../store/actions/productActions";
 
-class Size extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedColor: "",
-      selectedSize: "",
-      activeSize: "",
-    };
-  }
-  setSize = (e, size) => {
-    this.setState({
-      selectedColor: this.props.color,
-      selectedSize: size,
-    });
-    if (this.state.activeSize !== "") {
-      let elementRemove = document.getElementById(this.state.activeSize);
+const Size = (props) => {
+  const setSize = (e, size) => {
+    if (props.size !== "") {
+      let elementRemove = document.getElementById(props.size);
       elementRemove.classList.remove(style["active-size"]);
     }
     let elementAdd = document.getElementById(e.currentTarget.dataset.id);
     elementAdd.classList.add(style["active-size"]);
-    this.setState({
-      activeSize: e.currentTarget.dataset.id,
-    });
+
+    props.getSize(size);
   };
-  checkOutStock = (amount, size) => {
+  const checkOutStock = (amount, size) => {
     if (amount === 0) {
       return (
         <div
@@ -39,47 +27,58 @@ class Size extends Component {
         </div>
       );
     } else {
+      if (props.size === "") {
+        let elementRemove = document.getElementById(size);
+        if (elementRemove) {
+          elementRemove.classList.remove(style["active-size"]);
+        }
+      }
       return (
         <div
           className={style["size-link"]}
           id={size}
           data-id={size}
-          onClick={(e) => this.setSize(e, size)}
+          onClick={(e) => setSize(e, size)}
         >
           <a>{size}</a>
         </div>
       );
     }
   };
-  render() {
-    if (this.props.sizes) {
-      const { sizes } = this.props;
-      return (
-        <div className={style["size-container"]}>
-          <div className={style["size-title"]}>Size:</div>
-          <ul className={style["size-list"]}>
-            <li key="xx-small">
-              {this.checkOutStock(sizes["xx-small"], "XXS")}
-            </li>
-            <li key="x-small">{this.checkOutStock(sizes["x-small"], "XS")}</li>
-            <li key="small">{this.checkOutStock(sizes["small"], "S")}</li>
-            <li key="medium">{this.checkOutStock(sizes["medium"], "M")}</li>
-            <li key="large">{this.checkOutStock(sizes["large"], "L")}</li>
-            <li key="x-large">{this.checkOutStock(sizes["x-large"], "XL")}</li>
-            <li key="xx-large">
-              {this.checkOutStock(sizes["xx-large"], "XXL")}
-            </li>
-          </ul>
-        </div>
-      );
-    } else {
-      return <div />;
-    }
-  }
-}
 
-const mapStateToProps = (state) => {
-  return { sizes: state.color.sizes, color: state.color.color };
+  if (props.sizes) {
+    const { sizes } = props;
+    return (
+      <div className={style["size-container"]}>
+        <div className={style["size-title"]}>Size:</div>
+        <ul className={style["size-list"]}>
+          <li key="xx-small">{checkOutStock(sizes["xx-small"], "XXS")}</li>
+          <li key="x-small">{checkOutStock(sizes["x-small"], "XS")}</li>
+          <li key="small">{checkOutStock(sizes["small"], "S")}</li>
+          <li key="medium">{checkOutStock(sizes["medium"], "M")}</li>
+          <li key="large">{checkOutStock(sizes["large"], "L")}</li>
+          <li key="x-large">{checkOutStock(sizes["x-large"], "XL")}</li>
+          <li key="xx-large">{checkOutStock(sizes["xx-large"], "XXL")}</li>
+        </ul>
+      </div>
+    );
+  } else {
+    return <div />;
+  }
 };
 
-export default connect(mapStateToProps)(Size);
+const mapStateToProps = (state) => {
+  return {
+    sizes: state.product.sizes,
+    color: state.product.color,
+    size: state.product.size,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getSize: (size) => dispatch(getSize(size)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Size);

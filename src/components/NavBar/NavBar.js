@@ -15,17 +15,16 @@ import { ReactComponent as Inbox } from "../../icons/icon-inbox.svg";
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    this.clickIcon = this.clickIcon.bind(this);
   }
 
-  clickIcon() {
+  clickIcon = () => {
     let x = document.getElementById("myTopNav");
     if (x.className === styles["navbar-right"]) {
       x.className += cx(styles["navbar-right"], styles.responsive);
     } else {
       x.className = styles["navbar-right"];
     }
-  }
+  };
 
   render() {
     const links = this.props.auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
